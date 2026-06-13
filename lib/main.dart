@@ -9,14 +9,41 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp( // ✅ const
+    return const MaterialApp( 
       home: Home(),
     );
   }
 }
 
 class Home extends StatelessWidget {
-  const Home({super.key}); // ✅
+  const Home({super.key}); 
+
+  Widget button(String text){
+
+    return Expanded(
+      child: Container(
+        margin: const EdgeInsets.all(8),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.all(20),
+            backgroundColor: const Color.fromARGB(255, 232, 198, 87),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadiusGeometry.circular(12)
+            ),
+            
+          ),
+          onPressed: (){
+            print(text);
+          },
+          child:Text(
+            text,
+            style: const TextStyle(fontSize: 24, color: Colors.white),
+          ) 
+          
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,26 +82,43 @@ class Home extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                color: const Color.fromARGB(255, 128, 82, 82),
+
+                color: const Color.fromARGB(255, 232, 232, 232),
                 child: Column(
                   children: [
-                     IconButton(
-                      icon: Icon(
-                        Icons.backspace
-                      ),
-                      onPressed: ()
-                      {
-                        print("Delete");
-                      },
+                     Row(
+                      children: [
+                          button("7"),
+                          button("8"),
+                          button("9"),
+                          button("÷"),
+
+                      ],
                      ),
-                     IconButton(
-                      icon: Icon(
-                        Icons.backspace
-                      ),
-                      onPressed: ()
-                      {
-                        print("Delete");
-                      },
+
+                     Row(
+                      children: [
+                          button("4"),
+                          button("5"),
+                          button("6"),
+                          button("×"),
+                      ],
+                     ),
+                     Row(
+                      children: [
+                          button("1"),
+                          button("2"),
+                          button("3"),
+                          button("-"),
+                      ],
+                     ),
+                     Row(
+                      children: [
+                      button("C"),
+                      button("0"),
+                      button("="),
+                      button("+"),
+                      ],
                      )
                   ],
                  
